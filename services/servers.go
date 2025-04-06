@@ -6,10 +6,13 @@ import (
 	"github.com/zefrenchwan/m3.git/storage"
 )
 
+// BuildServices is the function to change and include your services.
+// Just copy paste and adapt
 func BuildServices(serviceContainer *ServiceServer, context ServiceContext) {
 	serviceContainer.AddServiceHandler("GET", "/user", context, upsertUser)
 }
 
+// LaunchHandler creates and launches the server
 func LaunchHandler(addr string, dao storage.Dao) {
 	mux := http.NewServeMux()
 	handler := ServiceServer{mux}

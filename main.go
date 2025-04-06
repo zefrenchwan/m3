@@ -27,6 +27,9 @@ func main() {
 		log.Println("Started DAO as", dao.Info())
 	}
 
-	// DAO is up
-	services.LaunchHandler(":3000", dao)
+	// DAO is up, start server
+	addr := config["SERVING_ADDRESS"]
+	log.Println("Starting application")
+	log.Println("Will serve to", addr)
+	services.LaunchHandler(addr, dao)
 }

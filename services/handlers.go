@@ -50,10 +50,12 @@ func NewHandler(context ServiceContext, handler ServiceHandler) http.HandlerFunc
 	}
 }
 
+// ServiceServer just decorates a MUX to deal with handlers
 type ServiceServer struct {
 	mux *http.ServeMux
 }
 
+// AddServiceHandler registers a request mapping
 func (s ServiceServer) AddServiceHandler(requestType string, requestPath string, context ServiceContext, element ServiceHandler) {
 	s.mux.Handle(strings.ToUpper(requestType)+" "+requestPath, NewHandler(context, element))
 }
